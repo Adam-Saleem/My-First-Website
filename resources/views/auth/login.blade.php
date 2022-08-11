@@ -16,7 +16,7 @@
                 </div>
                 <div class="mb-3">
                     <button type="submit" class="btn btn-primary">Sign In</button>
-                    <a class="text-decoration-none float-right mt-3" href="{{ route('/register') }}">Create new account</a>
+                    <a class="text-decoration-none float-right mt-3" href="{{ route('register') }}">Create new account</a>
 
                 </div>
                 <div class="my-1">

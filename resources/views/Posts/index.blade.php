@@ -18,15 +18,13 @@
             <p>Login or create a new account.</p>
         </div>
         <div class="mb-3">
-            <a href="{{ url('/login') }}">
+            <a href="{{ route('login') }}">
                 <button type="submit" class="btn btn-primary">Login</button>
             </a>
-            <a href="{{ url('/register') }}">
+            <a href="{{ route('register') }}">
                 <button type="submit" class="btn btn-primary">Register</button>
             </a>
-
         </div>
-
     </div>
     @endif
 @endsection
