@@ -1,8 +1,6 @@
 <?php
 
-    use App\Http\Controllers\LoginController;
-    use App\Http\Controllers\RegistrationController;
-    use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,13 +17,6 @@ Route::get('/', function () {
     return view('Posts.index');
 });
 
-Route::get('/register', [RegistrationController::class , 'create']);
-
-Route::post('/register', [RegistrationController::class , 'store']);
 
 
-Route::get('/logout', [LoginController::class ,'destroy']);
-
-Route::get('/login', [LoginController::class , 'create']);
-
-Route::post('/login', [LoginController::class , 'store']);
+require __DIR__.'/auth.php';

@@ -29,8 +29,6 @@
             } else {
                 return redirect(url('/'));
             }
-
         }
-
     }
 

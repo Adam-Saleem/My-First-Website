@@ -4,12 +4,12 @@
     @if (Auth::check())
         <div class="content">
             <p>You are login</p>
-
-            <p>
-                <a href="{{ url('/logout') }}">
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
                     <button type="submit" class="btn btn-primary">Logout</button>
-                </a>
-            </p>
+            </form>
+
+
         </div>
 
     @else

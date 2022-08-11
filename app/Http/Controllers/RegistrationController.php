@@ -4,6 +4,7 @@
 
     use App\Models\User;
     use Illuminate\Http\Request;
+    use mysql_xdevapi\Exception;
 
     class RegistrationController extends Controller
     {
