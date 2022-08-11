@@ -1,4 +1,4 @@
 <div class="logo">
-    <a href="https://www.creative-tim.com" class="simple-text logo-mini"></a>
-    <a href="https://www.creative-tim.com" class="simple-text logo-normal">Your Logo</a>
+    <a href="/" class="simple-text logo-mini"></a>
+    <a href="/" class="simple-text logo-normal">My Logo</a>
 </div>
