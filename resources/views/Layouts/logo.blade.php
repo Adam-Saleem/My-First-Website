@@ -1,4 +1,3 @@
 <div class="logo">
-    <a href="/" class="simple-text logo-mini"></a>
-    <a href="/" class="simple-text logo-normal">My Logo</a>
+        <a href="{{ url('/') }}" class="text-center simple-text logo-normal">My Page Logo</a>
 </div>
