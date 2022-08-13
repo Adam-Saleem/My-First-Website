@@ -1,5 +1,5 @@
 <div class="sidebar-wrapper">
-        <ul class="nav">
+    <ul class="nav">
             <li>
                 <a class="text-center" href="{{ url('/') }}">Home</a>
             </li>

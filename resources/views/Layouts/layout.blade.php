@@ -23,6 +23,7 @@
 {{--        @dd( assets('assets/css/bootstrap.min.css') );--}}
     <div class="sidebar" data-color="white" data-active-color="danger">
         @include('layouts.logo')
+        
         @include('layouts.menu')
     </div>
     <div class="main-panel" style="height: 100vh;">
