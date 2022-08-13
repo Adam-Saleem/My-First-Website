@@ -1,22 +1,19 @@
 <div class="sidebar-wrapper">
         <ul class="nav">
-            <li class="active ">
-                <a href="javascript:;">
-                    <i class="nc-icon nc-bank"></i>
-                    <p>First Item</p>
-                </a>
+            <li>
+                <a class="text-center" href="{{ url('/') }}">Home</a>
             </li>
             <li>
-                <a href="javascript:;">
-                    <i class="nc-icon nc-diamond"></i>
-                    <p>Second Item</p>
-                </a>
+                <a class="text-center" href="{{ url('school') }}">Schools</a>
             </li>
             <li>
-                <a href="javascript:;">
-                    <i class="nc-icon nc-pin-3"></i>
-                    <p>Third Item</p>
-                </a>
+                <a class="text-center" href="{{ url('teacher') }}">Teachers</a>
+            </li>
+            <li>
+                <a class="text-center" href="{{ url('student') }}">Students</a>
+            </li>
+            <li>
+                <a class="text-center" href="{{ url('subject') }}">Subjects</a>
             </li>
         </ul>
 </div>

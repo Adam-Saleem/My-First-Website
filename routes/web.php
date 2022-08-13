@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+    use App\Http\Controllers\SchoolController;
+    use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,11 @@ Route::get('/', function () {
     return view('Posts.index');
 });
 
+Route::get('school', [SchoolController::class, 'index']);
+
+Route::get('school/show/{id}', [SchoolController::class, 'show']);
+
+Route::get('school/edit/{id}',[SchoolController::class , 'edit']);
 
 
 require __DIR__.'/auth.php';
