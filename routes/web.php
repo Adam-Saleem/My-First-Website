@@ -1,6 +1,10 @@
 <?php
 
     use App\Http\Controllers\SchoolController;
+    use App\Http\Controllers\TeacherController;
+    use App\Http\Controllers\StudentController;
+    use App\Http\Controllers\SubjectController;
+
     use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,5 +23,12 @@ Route::get('/', function () {
 });
 
 Route::resource('school',SchoolController::class);
+
+Route::resource('teacher', TeacherController::class);
+
+Route::resource('teacher', TeacherController::class);
+    Route::resource('teacher', TeacherController::class);
+
+
 
 require __DIR__.'/auth.php';

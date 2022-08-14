@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SchoolRequest;
 use App\Models\School;
 use Illuminate\Http\Request;
-use function Psy\sh;
 
 class SchoolController extends Controller
 {
@@ -26,7 +26,7 @@ class SchoolController extends Controller
      */
     public function create()
     {
-        return view('school.create');
+        return view('school.create_edit');
     }
 
     /**
@@ -35,18 +35,13 @@ class SchoolController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SchoolRequest $request)
     {
-        $this->validate($request,[
-            'name' => 'required',
-            'address' => 'required'
-        ]);
-
         School::create([
-            'name' => request('name'),
-            'address' => request('address'),
+            'name' => $request->name,
+            'address' => $request->address,
         ]);
-        return $this->index();
+        return redirect('school');
     }
 
     /**
@@ -66,7 +61,7 @@ class SchoolController extends Controller
      */
     public function edit(School $school)
     {
-        return view('school.edit',compact('school'));
+        return view('school.create_edit',compact('school'));
     }
 
     /**
@@ -75,15 +70,15 @@ class SchoolController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,School $school)
+    public function update(SchoolRequest $request,School $school)
     {
-        $newRecord = $this->validate($request,[
-            'name' => 'required',
-            'address' => 'required'
+        $school->update([
+            'name' => $request->name,
+            'address' => $request->address
         ]);
 
-        $school->update($newRecord);
-        return $this->show($school);
+
+        return redirect("school/$school->id");
     }
 
     /**
@@ -94,6 +89,6 @@ class SchoolController extends Controller
     public function destroy(School $school)
     {
         $school->delete();
-        return $this->index();
+        return redirect('school');
     }
 }
