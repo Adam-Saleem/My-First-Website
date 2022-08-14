@@ -24,5 +24,11 @@ Route::get('school/show/{id}', [SchoolController::class, 'show']);
 
 Route::get('school/edit/{id}',[SchoolController::class , 'edit']);
 
+Route::get('school/create' ,[SchoolController::class ,'create']);
 
+Route::get('school/destroy/{id}',[SchoolController::class,'destroy']);
+
+Route::post('school/store',[SchoolController::class , 'store']);
+
+Route::post('school/update/{id}',[SchoolController::class , 'update']);
 require __DIR__.'/auth.php';
