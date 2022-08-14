@@ -19,7 +19,7 @@
                                     <tr>
                                         <th>{{ $school->name }}</th>
                                         <th>{{ $school->address }}</th>
-                                        <th class="text-right"><a href="school/show/{{$school->id}}">Show Detiles</a> <a class="pl-2 ml-2 border-left" href="school/edit/{{$school->id}}">Edit</a></th>
+                                        <th class="text-right"><a href="school/{{$school->id}}">Show Detiles</a> <a class="pl-2 ml-2 border-left" href="school/{{$school->id}}/edit">Edit</a></th>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -28,7 +28,6 @@
                             <a href="{{ url('school/create') }}"><button class="btn btn-primary">Add New School</button></a>
                         </div>
                     </div>
-                </div>
                 </div>
             </div>
         </div>

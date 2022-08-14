@@ -13,7 +13,7 @@
                 </p>
 
                 <div class="text-right">
-                    <a href="{{ url("school/edit/$school->id")}}"><button class="btn btn-primary">Edit info</button></a>
+                    <a href="{{ url("school/$school->id/edit") }}"><button class="btn btn-primary">Edit info</button></a>
                 </div>
             </div>
         </div>

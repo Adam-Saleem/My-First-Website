@@ -7,7 +7,7 @@
                 <h5 class="card-title">Add New School</h5>
             </div>
             <div class="card-body">
-                <form method="POST" action="{{ url("school/store") }}">
+                <form method="POST" action="{{ url("school") }}">
                     {{ csrf_field() }}
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\School;
 use Illuminate\Http\Request;
+use function Psy\sh;
 
 class SchoolController extends Controller
 {
@@ -36,7 +37,7 @@ class SchoolController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate(request(),[
+        $this->validate($request,[
             'name' => 'required',
             'address' => 'required'
         ]);
@@ -45,62 +46,54 @@ class SchoolController extends Controller
             'name' => request('name'),
             'address' => request('address'),
         ]);
-        return redirect('school');
+        return $this->index();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(School $school)
     {
-        $school = School::find($id);
         return view('school.show',compact('school'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(School $school)
     {
-        $school = School::find($id);
         return view('school.edit',compact('school'));
-
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,School $school)
     {
-        $newRecord = $this->validate(request(),[
+        $newRecord = $this->validate($request,[
             'name' => 'required',
             'address' => 'required'
         ]);
 
-        School::whereId($id)->update($newRecord);
-        return redirect("school/show/$id");
+        $school->update($newRecord);
+        return $this->show($school);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(School $school)
     {
-        $school = School::find($id);
         $school->delete();
-        return redirect('school');
+        return $this->index();
     }
 }
