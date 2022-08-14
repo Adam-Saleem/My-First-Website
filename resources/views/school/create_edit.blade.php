@@ -5,7 +5,7 @@
         <div class="card card-user">
             <div class="card-header">
                 @if( isset($school))
-                    <h5 class="card-title">Edit {{ $school->name }} </h5>
+                    <h5 class="card-title">Edit <span class="text-info">{{ $school->name }}</span>  Record</h5>
                 @else
                     <h5 class="card-title">Add New School</h5>
                 @endif
