@@ -26,7 +26,8 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        return view('teacher.create_edit');
+        $teacher = new Teacher;
+        return view('teacher.create_edit',compact('teacher'));
     }
 
     /**

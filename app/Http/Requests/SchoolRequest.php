@@ -24,7 +24,7 @@ class SchoolRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' => 'required|unique:schools',
             'address' => 'required'
         ];
     }
