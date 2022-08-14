@@ -1,3 +1,3 @@
 <div class="logo">
-        <a href="{{ url('/') }}" class="text-center simple-text logo-normal">My Page Logo</a>
+        <i class="text-center simple-text">My Page Logo</i>
 </div>

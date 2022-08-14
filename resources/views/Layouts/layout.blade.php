@@ -31,8 +31,8 @@
             @include('layouts.nav')
             <!-- End Navbar -->
             @yield('contact')
-            
-            <div class="footer bg-dark text-white">
+
+            <div class="footer bg-dark text-white fixed-bottom">
                 @include('layouts.footer')
             </div>
         </div>
