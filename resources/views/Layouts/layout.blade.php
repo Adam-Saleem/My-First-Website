@@ -19,35 +19,38 @@
     <link href="{{ asset('assets/demo/demo.css') }}" rel="stylesheet" />
 </head>
 <body class="">
-    <div class="wrapper ">
+    <div class="wrapper">
 {{--        @dd( assets('assets/css/bootstrap.min.css') );--}}
-    <div class="sidebar" data-color="white" data-active-color="danger">
-        @include('layouts.logo')
-        
-        @include('layouts.menu')
+        <div class="sidebar" data-color="white" data-active-color="danger">
+            @include('layouts.logo')
+
+            @include('layouts.menu')
+        </div>
+        <div class="main-panel" style="height: 100vh;">
+            <!-- Navbar -->
+            @include('layouts.nav')
+            <!-- End Navbar -->
+            @yield('contact')
+            
+            <div class="footer bg-dark text-white">
+                @include('layouts.footer')
+            </div>
+        </div>
+
     </div>
-    <div class="main-panel" style="height: 100vh;">
-        <!-- Navbar -->
-        @include('layouts.nav')
-        <!-- End Navbar -->
-        @yield('contact')
-        <footer class="footer" style="position: absolute; bottom: 0; width: -webkit-fill-available;">
-            @include('layouts.footer')
-        </footer>
-    </div>
-</div>
+
 <!--   Core JS Files   -->
-<script src="{{url('assets/js/core/jquery.min.js')}}}"></script>
-<script src="{{ url('assets/js/core/popper.min.js') }}"></script>
-<script src="{{url('assets/js/core/bootstrap.min.js')}} "></script>
-<script src="{{url('assets/js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
+<script src="{{ asset('assets/js/core/jquery.min.js')}}}"></script>
+<script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
+<script src="{{ asset('assets/js/core/bootstrap.min.js')}} "></script>
+<script src="{{ asset('assets/js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
 <!--  Google Maps Plugin    -->
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 <!-- Chart JS -->
-<script src="{{ url('assets/js/plugins/chartjs.min.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/chartjs.min.js') }}"></script>
 <!--  Notifications Plugin    -->
-<script src="{{url('assets/js/plugins/bootstrap-notify.js')}}"></script>
+<script src="{{ asset('assets/js/plugins/bootstrap-notify.js')}}"></script>
 <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="{{url('assets/js/paper-dashboard.min.js?v=2.0.1')}}" type="text/javascript"></script>
+<script src="{{ asset('assets/js/paper-dashboard.min.js?v=2.0.1')}}" type="text/javascript"></script>
 </body>
 </html>
