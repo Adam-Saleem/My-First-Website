@@ -8,8 +8,6 @@
                 @csrf
                     <button type="submit" class="btn btn-primary">Logout</button>
             </form>
-
-
         </div>
 
     @else
