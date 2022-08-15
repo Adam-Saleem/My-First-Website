@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StudentRequest;
+use App\Models\School;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -13,7 +16,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        $students = Student::latest()->get();
+        return view('student.index', compact('students'));
     }
 
     /**
@@ -23,7 +27,9 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        $schools = School::all();
+        $student = new Student();
+        return view('student.create_edit' ,compact('schools', 'student'));
     }
 
     /**
@@ -32,53 +38,65 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StudentRequest $request)
     {
-        //
+        Student::create([
+            'name' => $request->name,
+            'birth_date' => $request->birth_date,
+            'class_year' => $request->class_year,
+            'school_id' => $request->school_id
+            ]);
+        return redirect('student');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(student $student)
     {
-        //
+        $school = School::findOrFail($student->school_id);
+        return view('student.show',compact('student', 'school'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(student $student)
     {
-        //
+        $schools = School::all();
+        return view('student.create_edit',compact('student','schools'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StudentRequest $request,student $student)
     {
-        //
+        $student->update([
+            'name' => $request->name,
+            'birth_date' => $request->birth_date,
+            'class_year' => $request->class_year,
+            'school_id' => $request->school_id
+        ]);
+
+        return redirect("student/$student->id");
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Student $student)
     {
-        //
+        $student->delete();
+        return redirect('student');
     }
 }
