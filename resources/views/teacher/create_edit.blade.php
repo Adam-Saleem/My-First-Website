@@ -27,6 +27,14 @@
                         <label for="birth_date" class="form-label">Birth_date</label>
                         <input type="date" class="form-control" id="birth_date" name="birth_date" value="{{ $teacher->exists?$teacher->birth_date:old('birth_date') }}">
                     </div>
+                    <div class="mb-3">
+                        <label class="form-label">Select School</label><br>
+                        @foreach($schools as $school)
+                        <input type="checkbox" id="school{{$school->id}}"  name="schools[]" value="{{$school->id}}" {{ $teacher->schools->contains($school)?'checked':'' }}>
+                        <label for="school{{$school->id}}">{{$school->name}}</label><br>
+                        @endforeach
+
+                    </div>
                     <div class="mb-3 text-right">
                             <button type="submit" class="btn btn-primary">{{ $teacher->exists?'Update':'Add new Teacher'}}</button>
                       </div>

@@ -1,15 +1,20 @@
 <?php
 
-namespace App\Models;
+    namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+    use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class School extends BaseModel
-{
-    use HasFactory;
-
-    public function student()
+    class School extends BaseModel
     {
-        return $this->hasMany(Student::class);
+        use HasFactory;
+
+        public function students()
+        {
+            return $this->hasMany(Student::class);
+        }
+
+        public function teachers()
+        {
+            return $this->belongsToMany(Teacher::class);
+        }
     }
-}

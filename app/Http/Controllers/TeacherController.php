@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TeacherRequest;
+use App\Models\School;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 
@@ -27,7 +28,8 @@ class TeacherController extends Controller
     public function create()
     {
         $teacher = new Teacher;
-        return view('teacher.create_edit',compact('teacher'));
+        $schools = School::all();
+        return view('teacher.create_edit',compact('teacher','schools'));
     }
 
     /**
@@ -42,6 +44,11 @@ class TeacherController extends Controller
             'name' => $request->name,
             'birth_date' => $request->birth_date,
         ]);
+
+        $schools = School::findOrFail($request->schools);
+        $teacher = Teacher::get()->last();
+        $teacher->schools()->attach($schools);
+
         return redirect('teacher');
     }
 
@@ -62,7 +69,8 @@ class TeacherController extends Controller
      */
     public function edit(teacher $teacher)
     {
-        return view('teacher.create_edit',compact('teacher'));
+        $schools = School::all();
+        return view('teacher.create_edit',compact('teacher','schools'));
     }
 
     /**
@@ -78,6 +86,8 @@ class TeacherController extends Controller
             'birth_date' => $request->birth_date
         ]);
 
+        $schools = School::findOrFail($request->schools);
+        $teacher->schools()->sync($schools);
 
         return redirect("teacher/$teacher->id");
     }

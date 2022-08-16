@@ -1,8 +1,9 @@
-<?php
+<?php /** @noinspection PhpUnreachableStatementInspection */
 
     namespace App\Http\Requests;
 
     use Illuminate\Foundation\Http\FormRequest;
+    use Illuminate\Validation\Rule;
     use function Symfony\Component\Translation\t;
 
     class TeacherRequest extends FormRequest
@@ -24,6 +25,13 @@
          */
         public function rules()
         {
+            if($this->method() == 'PATCH' or $this->method() == 'PUT') {
+                $teacher = $this->route('teacher');
+                return [
+                    'name' => ['required',Rule::unique('teachers')->ignore($teacher->id)],
+                    'birth_date' => 'required|date|date_format:Y-m-d|before:'.now()->subYears(18)->toDateString()
+                ];
+            }
             return [
                 'name' => 'required|unique:teachers',
                 'birth_date' => 'required|date|date_format:Y-m-d|before:'.now()->subYears(18)->toDateString()

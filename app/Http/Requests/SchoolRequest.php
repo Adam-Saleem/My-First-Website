@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Models\School;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class SchoolRequest extends FormRequest
 {
@@ -23,6 +25,13 @@ class SchoolRequest extends FormRequest
      */
     public function rules()
     {
+        if ($this->method() == 'PATCH' or $this->method() == 'PUT'){
+            $school = $this->route('school');
+            return [
+                'name' => ['required',Rule::unique('schools')->ignore($school->id)],
+                'address' => 'required'
+            ];
+        }
         return [
             'name' => 'required|unique:schools',
             'address' => 'required'
