@@ -19,7 +19,7 @@ class CreateStudentsTable extends Migration
             $table->string('name');
             $table->date('birth_date');
             $table->integer('class_year');
-            $table->foreignIdFor(School::class);
+            $table->foreignId('school_id')->references('id')->on('schools')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
