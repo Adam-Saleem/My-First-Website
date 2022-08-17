@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SubjectRequest;
+use App\Models\Subject;
 use Illuminate\Http\Request;
 
 class SubjectController extends Controller
@@ -13,7 +15,8 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        //
+        $subjects = Subject::latest()->get();
+        return view('subject.index', compact('subjects'));
     }
 
     /**
@@ -23,7 +26,8 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        //
+        $subject = new Subject;
+        return view('subject.create_edit',compact('subject'));
     }
 
     /**
@@ -32,53 +36,60 @@ class SubjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SubjectRequest $request)
     {
-        //
+        Subject::create([
+            'name' => $request->name,
+            'description' => $request->description,
+        ]);
+        return redirect('subject');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Subject $subject)
     {
-        //
+        return view('subject.show',compact('subject'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Subject $subject)
     {
-        //
+        return view('subject.create_edit',compact('subject'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SubjectRequest $request,Subject $subject)
     {
-        //
+        $subject->update([
+            'name' => $request->name,
+            'description' => $request->description
+        ]);
+
+
+        return redirect("subject/$subject->id");
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Subject $subject)
     {
-        //
+        $subject->delete();
+        return redirect('subject');
     }
 }
