@@ -31,8 +31,6 @@ Route::resource('school',SchoolController::class);
 
 Route::resource('teacher', TeacherController::class);
 
-Route::resource('school.teacher', SchoolTeacherController::class);
-
 Route::resource('student', StudentController::class);
 
 Route::resource('subject', SubjectController::class);
