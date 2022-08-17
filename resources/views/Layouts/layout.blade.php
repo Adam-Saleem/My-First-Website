@@ -32,7 +32,7 @@
             <!-- End Navbar -->
             @yield('contact')
 
-            <div class="footer bg-dark text-white fixed-bottom">
+            <div class="footer bg-dark text-white">
                 @include('layouts.footer')
             </div>
         </div>
