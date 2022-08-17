@@ -15,7 +15,7 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        $subjects = Subject::latest()->get();
+        $subjects = Subject::simplePaginate(5);
         return view('subject.index', compact('subjects'));
     }
 
@@ -77,7 +77,6 @@ class SubjectController extends Controller
             'name' => $request->name,
             'description' => $request->description
         ]);
-
 
         return redirect("subject/$subject->id");
     }

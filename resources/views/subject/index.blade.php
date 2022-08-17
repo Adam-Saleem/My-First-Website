@@ -12,7 +12,7 @@
                             <table class="table">
                                 <thead class=" text-primary">
                                 <th>Subject name</th>
-                                <th>Description</th>
+                                <th class="w-50">Description</th>
                                 </thead>
                                 <tbody>
                                 @foreach($subjects as $subject)
@@ -24,6 +24,9 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                        <div>
+                            {{ $subjects->links() }}
+                        </div>
                         <div class="text-right">
                             <a href="{{ url('subject/create') }}"><button class="btn btn-primary">Add New Subject</button></a>
                         </div>

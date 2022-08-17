@@ -14,6 +14,10 @@
          */
         public function school()
         {
-            return $this->belongsTo(School::class)->withTimestamps();
+            return $this->belongsTo(School::class);
+        }
+        public function subjects()
+        {
+            return $this->belongsToMany(Subject::class)->withTimestamps();
         }
     }

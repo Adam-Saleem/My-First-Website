@@ -15,6 +15,6 @@
 
         public function teachers()
         {
-            return $this->belongsToMany(Teacher::class);
+            return $this->belongsToMany(Teacher::class)->withTimestamps();
         }
     }

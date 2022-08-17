@@ -18,7 +18,7 @@ class StudentFactory extends Factory
             'name' => $this->faker->name,
             'birth_date' => $this->faker->date('Y-m-d'),
             'class_year' => $this->faker->numberBetween(1,12),
-            'school_id' => School::factory()
+            'school_id' => School::get()->last()->id
         ];
     }
 }

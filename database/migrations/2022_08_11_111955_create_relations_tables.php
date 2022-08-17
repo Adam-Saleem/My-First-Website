@@ -22,12 +22,14 @@ class CreateRelationsTables extends Migration
             $table->id();
             $table->foreignId('school_id')->references('id')->on('schools')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('teacher_id')->references('id')->on('teachers')->onUpdate('cascade')->onDelete('cascade');
+            $table->unique(['school_id','teacher_id']);
             $table->timestamps();
         });
         Schema::create('subject_teacher', function (Blueprint $table) {
             $table->id();
             $table->foreignId('subject_id')->references('id')->on('subjects')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('teacher_id')->references('id')->on('teachers')->onUpdate('cascade')->onDelete('cascade');
+            $table->unique(['subject_id', 'teacher_id']);
             $table->timestamps();
         });
         Schema::create('room_subject', function (Blueprint $table) {
@@ -35,13 +37,14 @@ class CreateRelationsTables extends Migration
             $table->foreignId('subject_id')->references('id')->on('subjects')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('room_id')->references('id')->on('rooms')->onUpdate('cascade')->onDelete('cascade');
             $table->date('time');
+            $table->unique(['subject_id', 'room_id']);
             $table->timestamps();
         });
         Schema::create('student_subject', function (Blueprint $table) {
             $table->id();
             $table->foreignId('subject_id')->references('id')->on('subjects')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('student_id')->references('id')->on('students')->onUpdate('cascade')->onDelete('cascade');
-            $table->double('mark');
+            $table->unique(['subject_id', 'student_id']);
             $table->timestamps();
         });
     }

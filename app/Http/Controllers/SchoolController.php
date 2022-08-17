@@ -15,7 +15,7 @@ class SchoolController extends Controller
      */
     public function index()
     {
-        $schools = School::latest()->get();
+        $schools = School::simplePaginate(10);
         return view('school.index', compact('schools'));
     }
 

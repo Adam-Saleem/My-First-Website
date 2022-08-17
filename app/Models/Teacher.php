@@ -13,4 +13,8 @@ class Teacher extends BaseModel
     {
         return $this->belongsToMany(School::class)->withTimestamps();
     }
+    public function subjects()
+    {
+        return $this->belongsToMany(Subject::class)->withTimestamps();
+    }
 }

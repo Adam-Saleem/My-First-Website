@@ -6,6 +6,7 @@ use App\Http\Requests\StudentRequest;
 use App\Models\School;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StudentController extends Controller
 {
@@ -16,7 +17,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::latest()->get();
+        $students = Student::simplePaginate(10);
         return view('student.index', compact('students'));
     }
 

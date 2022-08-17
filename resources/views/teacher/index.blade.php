@@ -24,6 +24,9 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                        <div>
+                            {{ $teachers->links() }}
+                        </div>
                         <div class="text-right">
                             <a href="{{ url('teacher/create') }}"><button class="btn btn-primary">Add New teacher</button></a>
                         </div>
