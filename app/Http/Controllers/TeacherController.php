@@ -40,15 +40,11 @@ class TeacherController extends Controller
      */
     public function store(teacherRequest $request)
     {
-        Teacher::create([
+        $teacher = Teacher::create([
             'name' => $request->name,
             'birth_date' => $request->birth_date,
         ]);
-
-        $schools = School::findOrFail($request->schools);
-        $teacher = Teacher::get()->last();
-        $teacher->schools()->attach($schools);
-
+        $teacher->schools()->attach($request->schools);
         return redirect('teacher');
     }
 
@@ -86,9 +82,7 @@ class TeacherController extends Controller
             'birth_date' => $request->birth_date
         ]);
 
-        $schools = School::findOrFail($request->schools);
-        $teacher->schools()->sync($schools);
-
+        $teacher->schools()->sync($request->schools);
         return redirect("teacher/$teacher->id");
     }
 
