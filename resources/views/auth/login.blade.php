@@ -5,22 +5,39 @@
         <div class="col-sm-9 col-lg-6 my-3">
             <h1>Sign In</h1>
             <form method="POST" action="{{ route('login') }}">
-                {{ csrf_field() }}
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}">
+                @csrf
+                <!-- Email Address -->
+                <div>
+                    <label for="email" :value="__('Email')" ></label>
+                    <input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
                 </div>
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" class="form-control" id="password" name="password">
-                </div>
-                <div class="mb-3">
-                    <button type="submit" class="btn btn-primary">Sign In</button>
-                    <a class="text-decoration-none float-right mt-3" href="{{ route('register') }}">Create new account</a>
 
+                <!-- Password -->
+                <div class="mt-4">
+                    <label for="password" :value="__('Password')" ></label>
+                    <input id="password" class="block mt-1 w-full"
+                             type="password"
+                             name="password"
+                             required autocomplete="current-password" />
                 </div>
-                <div class="my-1">
-                    @include('Layouts.errors')
+
+                <!-- Remember Me -->
+                <div class="block mt-4">
+                    <label for="remember_me" class="inline-flex items-center">
+                        <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
+                        <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                    </label>
+                </div>
+
+                <div class="flex items-center justify-end mt-4">
+                    @if (Route::has('password.request'))
+                        <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                            {{ __('Forgot your password?') }}
+                        </a>
+                    @endif
+                    <button class="ml-3">
+                        {{ __('Log in') }}
+                    </button>
                 </div>
             </form>
 

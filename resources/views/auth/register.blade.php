@@ -4,36 +4,46 @@
     <div class="content">
         <div class="col-sm-9 col-lg-6 my-3">
             <h1>Register</h1>
-            <form method="POST" action="{{route('register')}}">
-                {{ csrf_field() }}
-                <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" class="form-control" id="email" name="email" value="{{old('email')}}" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" class="form-control" id="password" name="password" required>
-                </div>
-                <div class="form-group">
-                    <label for="password_confirmation">Password confirmed:</label>
-                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
+            <form method="POST" action="{{ route('register') }}">
+                @csrf
+                <!-- Name -->
+                <div>
+                    <label for="name" :value="__('Name')" ></label>
+                    <input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
                 </div>
 
-                <div class="mb-3">
-                    <button type="submit" class="btn btn-primary">Register</button>
-                    <a class="text-decoration-none float-right mt-3" href="{{ route('login') }}">Already have account</a>
-
+                <!-- Email Address -->
+                <div class="mt-4">
+                    <label for="email" :value="__('Email')"></label>
+                    <input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
                 </div>
-                <div class="my-1">
-                    @include('Layouts.errors')
+
+                <!-- Password -->
+                <div class="mt-4">
+                    <label for="password" :value="__('Password')" ></label>
+                    <input id="password" class="block mt-1 w-full"
+                             type="password"
+                             name="password"
+                             required autocomplete="new-password" />
+                </div>
+                <!-- Confirm Password -->
+                <div class="mt-4">
+                    <label for="password_confirmation" :value="__('Confirm Password')"></label>
+                    <input id="password_confirmation" class="block mt-1 w-full"
+                             type="password"
+                             name="password_confirmation" required />
+                </div>
+
+                <div class="flex items-center justify-end mt-4">
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+                        {{ __('Already registered?') }}
+                    </a>
+
+                    <button class="ml-4">
+                        {{ __('Register') }}
+                    </button>
                 </div>
             </form>
-
         </div>
     </div>
-
 @endsection
