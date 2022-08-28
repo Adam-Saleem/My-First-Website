@@ -27,7 +27,8 @@ class StudentRequest extends FormRequest
             'name' => 'required',
             'birth_date' => 'required|date|date_format:Y-m-d|before:'.now()->subYears(5),
             'class_year' => 'required',
-            'school_id' => 'required'
+            'school_id' => 'required',
+            'image' => 'image'
 
         ];
     }
