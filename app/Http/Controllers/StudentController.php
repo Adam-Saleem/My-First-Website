@@ -28,9 +28,9 @@
          */
         public function create()
         {
-            $schools = School::all();
+
             $student = new Student();
-            return view('student.create_edit', compact('schools', 'student'));
+            return view('student.create_edit', compact( 'student'));
         }
 
         /**
@@ -76,8 +76,7 @@
          */
         public function edit(student $student)
         {
-            $schools = School::all();
-            return view('student.create_edit', compact('student', 'schools'));
+            return view('student.create_edit', compact('student'));
         }
 
         /**

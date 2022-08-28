@@ -3,17 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TeacherRequest;
-use App\Models\School;
 use App\Models\Teacher;
-use Illuminate\Http\Request;
 
 class TeacherController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
-     */
+    */
     public function index()
     {
         $teachers = Teacher::simplePaginate(10);
@@ -28,8 +25,7 @@ class TeacherController extends Controller
     public function create()
     {
         $teacher = new Teacher;
-        $schools = School::all();
-        return view('teacher.create_edit',compact('teacher','schools'));
+        return view('teacher.create_edit',compact('teacher'));
     }
 
     /**
@@ -65,8 +61,7 @@ class TeacherController extends Controller
      */
     public function edit(teacher $teacher)
     {
-        $schools = School::all();
-        return view('teacher.create_edit',compact('teacher','schools'));
+        return view('teacher.create_edit',compact('teacher'));
     }
 
     /**

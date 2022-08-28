@@ -12,11 +12,11 @@
             </div>
             <div class="card-body">
                 @if($student->exists)
-                    <form method="POST" action="{{ url("student/$student->id") }}">
+                    <form method="POST" enctype="multipart/form-data" action="{{ url("student/$student->id") }}">
                         {{ csrf_field() }}
                         {{ method_field('PATCH') }}
                 @else
-                    <form method="POST" action="{{ url("student") }}">
+                    <form method="POST" enctype="multipart/form-data" action="{{ url("student") }}">
                         {{ csrf_field() }}
                 @endif
                     <div class="mb-3">
@@ -25,7 +25,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="birth_date" class="form-label">Birth_date</label>
-                        <input type="date" class="form-control" id="birth_date" name="birth_date" value="{{ $student->exists?$student->birth_date:old('birth') }}">
+                        <input type="date" class="form-control" id="birth_date" name="birth_date" value="{{ $student->exists?$student->birth_date:old('birth_date') }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Student photo</label>
+                        <input type="file" class="form-check" id="image" name="image">
                     </div>
                     <div class="mb-3">
                         <label for="class_year" class="form-label">class_year</label>
@@ -47,7 +51,7 @@
                             <br>
                             <select class="custom-select ml-1 w-25" name="school_id" id="school_id">
                                 <option class="text-secondary" selected disabled>Select School</option>
-                                @foreach($schools as $school )
+                                @foreach(SchoolManager::getSchools() as $school )
                                     @if ($school->id == $student->school_id)
                                         <option value="{{ $school->id }}" selected>{{ $school->name }}</option>
                                     @else

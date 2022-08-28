@@ -29,7 +29,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Select School</label><br>
-                        @foreach($schools as $school)
+                        @foreach(SchoolManager::getSchools() as $school)
                         <input type="checkbox" id="school{{$school->id}}"  name="schools[]" value="{{$school->id}}" {{ $teacher->schools->contains($school)?'checked':'' }}>
                         <label for="school{{$school->id}}">{{$school->name}}</label><br>
                         @endforeach
