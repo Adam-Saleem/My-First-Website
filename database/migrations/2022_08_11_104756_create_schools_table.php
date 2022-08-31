@@ -17,6 +17,7 @@ class CreateSchoolsTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->text('address');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
