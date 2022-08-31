@@ -6,6 +6,8 @@
     use App\Http\Controllers\StudentController;
     use App\Http\Controllers\SubjectController;
 
+    use App\Models\User;
+    use App\Notifications\InvoicePaid;
     use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,10 +20,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-    Route::get('foo', function () {
-
-        dd(\App\Models\Teacher::find(3)->schools()->toSql());
-    });
+Route::get('foo', function () {
+    
+});
 
 Route::get('/', function () {
     return view('home');
